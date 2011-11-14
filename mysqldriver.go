@@ -112,7 +112,6 @@ func (t *MySQLTx) Rollback() error {
 
 func bindAndExec(stmt *mysql.Statement, args []interface{}) error {
 	if err := stmt.BindParams(args...); err != nil {
-		fmt.Printf("blowing up here..")
 		return err
 	}
 	if err := stmt.Execute(); err != nil {
@@ -168,9 +167,9 @@ func (r *MySQLResult) RowsAffected() (int64, error) {
 ////////////////
 
 type MySQLRows struct {
-	stmt  *mysql.Statement 
-	cols  []string          // column names in result
-	bindr []interface{}     // placeholder vars to bind data into
+	stmt  *mysql.Statement
+	cols  []string      // column names in result
+	bindr []interface{} // placeholder vars to bind data into
 }
 
 func (r *MySQLRows) initCols() {
@@ -205,7 +204,7 @@ func (r *MySQLRows) initCols() {
 			case mysql.FIELD_TYPE_LONGLONG:
 				bindr[i] = new(int64)
 			case mysql.FIELD_TYPE_INT24:
-				bindr[i] = new(int)
+				bindr[i] = new(int64)
 			case mysql.FIELD_TYPE_DATE:
 				bindr[i] = new(string)
 			case mysql.FIELD_TYPE_TIME:
@@ -213,9 +212,9 @@ func (r *MySQLRows) initCols() {
 			case mysql.FIELD_TYPE_DATETIME:
 				bindr[i] = new(string)
 			case mysql.FIELD_TYPE_YEAR:
-				bindr[i] = new(int)
+				bindr[i] = new(int64)
 			case mysql.FIELD_TYPE_NEWDATE:
-				bindr[i] = new(int)
+				bindr[i] = new(int64)
 			case mysql.FIELD_TYPE_VARCHAR:
 				bindr[i] = new(string)
 			case mysql.FIELD_TYPE_BIT:
