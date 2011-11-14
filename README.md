@@ -1,8 +1,8 @@
-== GoMySQLDriver ==
+## GoMySQLDriver ##
 
 MySQL driver for the `exp/sql`, the generic database API for Go.  This package is still in active development and the API is subject to change.  I'm tracking the weekly Go releases at the moment.
 
-== Installation ==
+## Installation ##
 
     # My fork of: github.com/Philio/GoMySQL - updated to compile on latest Go weekly
     goinstall github.com/coopernurse/GoMySQL
@@ -10,7 +10,7 @@ MySQL driver for the `exp/sql`, the generic database API for Go.  This package i
     # This package
     goinstall github.com/coopernurse/GoMySQLDriver
 
-== Usage ==
+## Usage ##
 
 See the `mysqldriver_test.go` file for example code.  But the important part is the `sql.Open()` command, which looks like this:
 
